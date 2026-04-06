@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Deepa V — Python & Django Developer for Hire</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Literata:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --ink:#0f0e0d;
+  --ink2:#4a4845;
+  --ink3:#9a9793;
+  --paper:#faf9f6;
+  --paper2:#f2f0eb;
+  --paper3:#e8e5de;
+  --gold:#c8923a;
+  --gold-light:#fdf3e3;
+  --gold-mid:#e8b96a;
+  --border:rgba(15,14,13,0.10);
+  --border2:rgba(15,14,13,0.18);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Literata',Georgia,serif;background:var(--paper);color:var(--ink);font-size:15px;line-height:1.75;cursor:none;}
+
+.cursor{position:fixed;width:10px;height:10px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width 0.2s,height 0.2s;}
+.cursor-ring{position:fixed;width:32px;height:32px;border:1.5px solid var(--gold);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width 0.2s,height 0.2s,opacity 0.2s;opacity:0.5;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:20px 56px;background:rgba(250,249,246,0.92);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border);}
+.nav-logo{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;letter-spacing:-0.02em;color:var(--ink);text-decoration:none;}
+.nav-logo span{color:var(--gold);}
+.nav-links{display:flex;gap:36px;list-style:none;}
+.nav-links a{font-family:'Syne',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink2);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-right{display:flex;gap:12px;align-items:center;}
+.nav-resume{font-family:'Syne',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;border:1px solid var(--border2);color:var(--ink);padding:9px 18px;border-radius:4px;text-decoration:none;display:flex;align-items:center;gap:6px;transition:border-color 0.2s,color 0.2s;}
+.nav-resume:hover{border-color:var(--gold);color:var(--gold);}
+.nav-hire{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:10px 22px;border-radius:4px;text-decoration:none;transition:background 0.2s;}
+.nav-hire:hover{background:var(--gold);}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center;padding:140px 56px 80px;position:relative;overflow:hidden;}
+.hero-bg-text{position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-family:'Syne',sans-serif;font-size:140px;font-weight:800;color:var(--paper2);line-height:1;pointer-events:none;user-select:none;letter-spacing:-0.05em;opacity:0.6;}
+.hero-left{display:flex;flex-direction:column;justify-content:center;z-index:1;}
+.hero-available{display:inline-flex;align-items:center;gap:8px;font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:32px;}
+.hero-dot{width:7px;height:7px;background:#4caf7d;border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.6;transform:scale(1.3);}}
+.hero-title{font-family:'Syne',sans-serif;font-size:52px;font-weight:800;line-height:1.1;letter-spacing:-0.02em;margin-bottom:28px;}
+.hero-title .italic{font-family:'Literata',serif;font-style:italic;font-weight:300;font-size:48px;color:var(--gold);}
+.hero-sub{font-size:16px;color:var(--ink2);max-width:480px;line-height:1.8;margin-bottom:48px;}
+.hero-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.btn-gold{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;background:var(--gold);color:#fff;padding:15px 36px;border-radius:4px;text-decoration:none;transition:background 0.2s,transform 0.15s;display:inline-flex;align-items:center;gap:8px;}
+.btn-gold:hover{background:#b07d2e;transform:translateY(-1px);}
+.btn-outline{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink);border:1px solid var(--border2);padding:14px 24px;border-radius:4px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:border-color 0.2s,color 0.2s;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+.hero-tagline{font-family:'Syne',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.06em;color:var(--ink3);margin-top:40px;padding-top:32px;border-top:0.5px solid var(--border);}
+
+/* HERO PHOTO */
+.hero-photo-wrap{position:relative;z-index:1;}
+.hero-photo-wrap::before{content:'';position:absolute;inset:20px 0 0 20px;background:var(--gold-light);border:1px solid var(--gold-mid);border-radius:12px;z-index:0;}
+.hero-photo{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:10px;position:relative;z-index:1;display:block;background:var(--paper3);}
+.hero-photo-badge{position:absolute;bottom:28px;left:-20px;z-index:2;background:var(--ink);color:var(--paper);padding:14px 18px;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,0.18);}
+.hpb-status{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#4caf7d;margin-bottom:4px;display:flex;align-items:center;gap:6px;}
+.hpb-dot{width:6px;height:6px;background:#4caf7d;border-radius:50%;animation:pulse 2s infinite;}
+.hpb-text{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--paper);}
+
+.section{padding:100px 56px;max-width:1200px;margin:0 auto;}
+.divider{border:none;border-top:0.5px solid var(--border);margin:0 56px;}
+.eyebrow{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.eyebrow::after{content:'';flex:0 0 40px;height:1px;background:var(--gold-mid);}
+.s-title{font-family:'Syne',sans-serif;font-size:30px;font-weight:800;letter-spacing:-0.02em;margin-bottom:48px;line-height:1.1;}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
+.srv{background:var(--paper);padding:36px 30px;position:relative;overflow:hidden;transition:background 0.2s;}
+.srv::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:width 0.35s ease;}
+.srv:hover{background:var(--paper2);}
+.srv:hover::after{width:100%;}
+.srv-num{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--ink3);letter-spacing:0.1em;margin-bottom:18px;}
+.srv-title{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;margin-bottom:10px;letter-spacing:-0.01em;}
+.srv-desc{font-size:14px;color:var(--ink2);line-height:1.7;}
+.srv-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px;}
+.stag{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:3px 10px;border-radius:2px;background:var(--paper2);color:var(--ink3);border:0.5px solid var(--border);}
+
+/* ABOUT */
+.about-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.about-lead{font-size:20px;line-height:1.7;color:var(--ink);margin-bottom:20px;font-weight:300;}
+.about-lead strong{font-weight:400;color:var(--gold);}
+.about-body{font-size:15px;color:var(--ink2);line-height:1.8;margin-bottom:28px;}
+.about-right{display:flex;flex-direction:column;gap:14px;}
+.about-card{background:var(--paper2);border:0.5px solid var(--border);border-radius:6px;padding:18px 20px;display:flex;gap:14px;align-items:flex-start;}
+.ac-icon{width:38px;height:38px;border-radius:4px;background:var(--gold-light);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
+.ac-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;margin-bottom:3px;}
+.ac-sub{font-size:12px;color:var(--ink3);}
+.resume-box{margin-top:28px;background:var(--ink);color:var(--paper);border-radius:6px;padding:22px 26px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.resume-box-text .rl{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px;}
+.resume-box-text .rn{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--paper);}
+.resume-box-text .rm{font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px;}
+.dl-btn{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:var(--gold);color:#fff;padding:11px 22px;border-radius:4px;border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;transition:background 0.2s;}
+.dl-btn:hover{background:#b07d2e;}
+
+/* SKILLS */
+.skills-bg{background:var(--paper2);}
+.skills-inner{padding:100px 56px;max-width:1200px;margin:0 auto;}
+.skills-layout{display:grid;grid-template-columns:260px 1fr;gap:64px;}
+.skills-heading{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;letter-spacing:-0.02em;line-height:1.1;position:sticky;top:120px;}
+.skills-heading em{font-family:'Literata',serif;font-style:italic;font-weight:300;color:var(--gold);}
+.skill-bars{display:flex;flex-direction:column;gap:14px;margin-bottom:24px;}
+.sk-row{display:flex;align-items:center;gap:14px;padding:16px 20px;background:var(--paper);border:0.5px solid var(--border);border-radius:6px;transition:border-color 0.2s,transform 0.2s;}
+.sk-row:hover{border-color:var(--gold-mid);transform:translateX(4px);}
+.sk-name{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;min-width:175px;}
+.sk-bar{flex:1;height:4px;background:var(--paper3);border-radius:2px;overflow:hidden;}
+.sk-fill{height:100%;background:var(--gold);border-radius:2px;}
+.sk-pct{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:var(--gold);min-width:34px;text-align:right;}
+.skill-cats{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.sk-cat{background:var(--paper);border:0.5px solid var(--border);border-radius:6px;padding:14px 16px;}
+.sk-cat-label{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.chips{display:flex;flex-wrap:wrap;gap:6px;}
+.chip{font-size:12px;padding:4px 10px;border-radius:3px;background:var(--paper2);color:var(--ink2);border:0.5px solid var(--border);}
+
+/* PROJECTS */
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.proj-card{border:0.5px solid var(--border);border-radius:8px;overflow:hidden;background:var(--paper);transition:transform 0.25s,box-shadow 0.25s;}
+.proj-card:hover{transform:translateY(-4px);box-shadow:0 20px 48px rgba(15,14,13,0.08);}
+.proj-card.featured{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;}
+.proj-thumb{height:220px;overflow:hidden;position:relative;}
+.proj-card.featured .proj-thumb{height:100%;min-height:260px;}
+.proj-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease;}
+.proj-card:hover .proj-thumb img{transform:scale(1.04);}
+.proj-num{position:absolute;bottom:14px;right:18px;font-family:'Syne',sans-serif;font-size:54px;font-weight:800;color:#fff;opacity:0.2;line-height:1;pointer-events:none;}
+.proj-body{padding:26px;}
+.proj-badge{display:inline-block;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;border-radius:2px;background:var(--gold-light);color:var(--gold);margin-bottom:10px;}
+.proj-name{font-family:'Syne',sans-serif;font-size:19px;font-weight:800;letter-spacing:-0.01em;margin-bottom:10px;}
+.proj-desc{font-size:14px;color:var(--ink2);line-height:1.7;margin-bottom:16px;}
+.proj-stack{display:flex;flex-wrap:wrap;gap:6px;}
+.ptag{font-size:11px;padding:4px 10px;border-radius:3px;background:var(--paper2);color:var(--ink2);border:0.5px solid var(--border);}
+
+/* EXPERIENCE */
+.exp-grid{display:grid;grid-template-columns:180px 1fr;gap:0;}
+.exp-year-col{padding-top:4px;}
+.exp-col-label{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);position:sticky;top:120px;}
+.exp-entries{border-left:1px solid var(--border);padding-left:40px;display:flex;flex-direction:column;}
+.exp-entry{padding:0 0 48px;position:relative;}
+.exp-entry::before{content:'';position:absolute;left:-45px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--paper);border:2px solid var(--gold);}
+.exp-entry:last-child{padding-bottom:0;}
+.exp-period{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.exp-role{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.01em;margin-bottom:4px;}
+.exp-company{font-size:14px;color:var(--ink3);margin-bottom:18px;}
+.exp-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.exp-list li{font-size:14px;color:var(--ink2);padding-left:20px;position:relative;line-height:1.65;}
+.exp-list li::before{content:'→';position:absolute;left:0;color:var(--gold);font-size:12px;top:1px;}
+
+/* WHY HIRE ME */
+.why-list{display:flex;flex-direction:column;gap:0;}
+.why-item{display:grid;grid-template-columns:48px 1fr;gap:24px;padding:32px 0;border-bottom:0.5px solid var(--border);align-items:start;}
+.why-item:first-child{border-top:0.5px solid var(--border);}
+.why-num{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--ink3);letter-spacing:0.08em;padding-top:4px;}
+.why-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;margin-bottom:8px;letter-spacing:-0.01em;}
+.why-desc{font-size:14px;color:var(--ink2);line-height:1.75;max-width:680px;}
+
+/* HIRE BANNER */
+.hire-banner{background:var(--ink);color:var(--paper);padding:80px 56px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;}
+.hb-tag{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.hb-title{font-family:'Syne',sans-serif;font-size:34px;font-weight:800;line-height:1.1;letter-spacing:-0.02em;max-width:540px;}
+.hb-title em{font-family:'Literata',serif;font-style:italic;font-weight:300;color:var(--gold-mid);}
+.hb-right{display:flex;flex-direction:column;gap:12px;min-width:250px;}
+.hb-btn{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;background:var(--gold);color:#fff;padding:16px 32px;border-radius:4px;text-decoration:none;text-align:center;transition:background 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.hb-btn:hover{background:#b07d2e;}
+.hb-btn.ghost{background:transparent;color:var(--paper);border:1px solid rgba(255,255,255,0.2);}
+.hb-btn.ghost:hover{border-color:var(--gold);color:var(--gold);}
+
+/* CONTACT */
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;}
+.c-items{display:flex;flex-direction:column;}
+.c-item{display:flex;align-items:flex-start;gap:16px;padding:18px 0;border-bottom:0.5px solid var(--border);}
+.c-item:first-child{padding-top:0;}
+.c-ico{width:38px;height:38px;background:var(--gold-light);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.c-lbl{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px;}
+.c-val{font-size:14px;color:var(--ink);}
+.cform{display:flex;flex-direction:column;gap:16px;}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.fg{display:flex;flex-direction:column;gap:6px;}
+.flbl{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);}
+.finput{background:var(--paper2);border:0.5px solid var(--border2);border-radius:4px;padding:12px 14px;font-size:14px;font-family:'Literata',serif;color:var(--ink);outline:none;transition:border-color 0.2s;}
+.finput:focus{border-color:var(--gold);}
+.ftextarea{resize:vertical;min-height:110px;}
+.fsubmit{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:var(--gold);color:#fff;border:none;padding:14px 28px;border-radius:4px;cursor:pointer;align-self:flex-start;transition:background 0.2s,transform 0.15s;display:inline-flex;align-items:center;gap:8px;}
+.fsubmit:hover{background:#b07d2e;transform:translateY(-1px);}
+
+footer{background:var(--ink);color:rgba(255,255,255,0.45);padding:30px 56px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+.f-logo{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#fff;letter-spacing:-0.02em;}
+.f-logo span{color:var(--gold);}
+.f-copy{font-size:12px;}
+.f-links{display:flex;gap:20px;}
+.f-links a{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s;}
+.f-links a:hover{color:var(--gold);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+.fu{opacity:0;animation:fadeUp 0.7s ease forwards;}
+.fu.d1{animation-delay:0.05s;}.fu.d2{animation-delay:0.2s;}.fu.d3{animation-delay:0.35s;}.fu.d4{animation-delay:0.5s;}.fu.d5{animation-delay:0.65s;}
+
+@media(max-width:900px){
+  nav{padding:16px 24px;}
+  .nav-links{display:none;}
+  .hero{grid-template-columns:1fr;padding:120px 24px 60px;gap:40px;}
+  .hero-photo-wrap{display:none;}
+  .hero-title{font-size:38px;}
+  .hero-title .italic{font-size:34px;}
+  .hero-bg-text{display:none;}
+  .section{padding:64px 24px;}
+  .divider{margin:0 24px;}
+  .services-grid{grid-template-columns:1fr;}
+  .about-layout,.skills-layout,.contact-layout{grid-template-columns:1fr;}
+  .proj-grid{grid-template-columns:1fr;}
+  .proj-card.featured{grid-column:span 1;display:block;}
+  .proj-card.featured .proj-thumb{height:200px;}
+  .skills-inner{padding:64px 24px;}
+  .skills-heading{position:static;margin-bottom:28px;}
+  .hire-banner{padding:56px 24px;flex-direction:column;}
+  .hb-title{font-size:28px;}
+  .f-row{grid-template-columns:1fr;}
+  footer{padding:24px;flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curR"></div>
+
+<nav>
+  <a href="#" class="nav-logo">Deepa<span style="margin-left:5px"> Vadivel</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="Deepa_Developer.pdf" download class="nav-resume">⬇ Resume</a>
+    <a href="#contact" class="nav-hire">Hire Me</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-text">DV</div>
+
+  <div class="hero-left">
+    <div class="hero-available fu d1"><div class="hero-dot"></div> Available for freelance projects</div>
+    <h1 class="hero-title fu d2">Python & Django<br/><span class="italic">Developer for hire.</span></h1>
+    <p class="hero-sub fu d3">Backend APIs, Django apps, data pipelines. I've spent the last 3 years shipping these at Chadura Tech — and before that, doing bioinformatics research. That background is unusual, and it's actually useful.</p>
+    <div class="hero-actions fu d4">
+      <a href="#projects" class="btn-gold">See what I've built →</a>
+      <a href="Deepa_Developer.pdf" download class="btn-outline">⬇ Resume</a>
+      <a href="#contact" class="btn-outline">Get in touch</a>
+    </div>
+    <div class="hero-tagline fu d5">Chadura Tech, Bengaluru · Django & Python daily · MSc Bioinformatics · IST · Open to remote</div>
+  </div>
+
+  <!-- RIGHT PHOTO — replace YOUR_PHOTO_URL_HERE with your actual photo URL or filename e.g. deepa.jpg -->
+  <div class="hero-photo-wrap fu d3">
+    <img class="hero-photo" src="DSC_8450.JPG" alt="Deepa Vadivel" onerror="this.style.background='#e8e5de';this.removeAttribute('src')"/>
+    <!--  <div class="hero-photo-badge">
+      <div class="hpb-status"><div class="hpb-dot"></div> Available now</div>
+      <div class="hpb-text">Open to freelance</div>
+    </div>-->
+
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="eyebrow">What I offer</div>
+  <div class="s-title">Freelance Services</div>
+  <div class="services-grid">
+    <div class="srv"><div class="srv-num">01</div><div class="srv-title">Backend API Development</div><div class="srv-desc">REST APIs in Django REST Framework — authentication, serialisation, third-party integrations. Clean, documented, ready to hand off to a frontend team.</div><div class="srv-tags"><span class="stag">Django</span><span class="stag">DRF</span><span class="stag">PostgreSQL</span><span class="stag">Celery</span></div></div>
+    <div class="srv"><div class="srv-num">02</div><div class="srv-title">Bioinformatics Tools</div><div class="srv-desc">Web apps for researchers who are tired of running everything from the command line. NGS pipelines, sequence analysis, scientific data visualisation — I understand the workflow, not just the code.</div><div class="srv-tags"><span class="stag">Python</span><span class="stag">HISAT2</span><span class="stag">SamTools</span><span class="stag">GATK</span><span class="stag">BWA</span><span class="stag">R</span><span class="stag">Nextflow</span></div></div>
+    <div class="srv"><div class="srv-num">03</div><div class="srv-title">Database Design</div><div class="srv-desc">Schema design and query optimisation for PostgreSQL. Getting the data layer right before things get complicated.</div><div class="srv-tags"><span class="stag">PostgreSQL</span><span class="stag">SQLite</span><span class="stag">SQL</span></div></div>
+    <div class="srv"><div class="srv-num">04</div><div class="srv-title">Web Scraping & Pipelines</div><div class="srv-desc">Automated data extraction in Python, built to run reliably — not a quick script you'll have to fix in two weeks.</div><div class="srv-tags"><span class="stag">Python</span><span class="stag">Automation</span></div></div>
+    <div class="srv"><div class="srv-num">05</div><div class="srv-title">Data Analysis</div><div class="srv-desc">Scientific and business data analysis in Python and R. Not just the numbers — actual insight you can act on.</div><div class="srv-tags"><span class="stag">Python</span><span class="stag">R</span><span class="stag">RStudio</span></div></div>
+    <div class="srv"><div class="srv-num">06</div><div class="srv-title">Django Web Applications</div><div class="srv-desc">Full apps, from scratch to deployed. CRM platforms, campaign tools, research dashboards — following proper MVC architecture throughout.</div><div class="srv-tags"><span class="stag">Django</span><span class="stag">HTML/CSS</span><span class="stag">Tailwind</span></div></div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="about-layout">
+    <div>
+      <div class="eyebrow">About me</div>
+      <div class="s-title">The developer<br/>behind the work</div>
+      <p class="about-lead">I'm Deepa Vadivel — Python & Django developer, based in Bengaluru. I've been writing backend code professionally for about <strong>3 years</strong>, mostly APIs and Django applications.</p>
+      <p class="about-body">Before that I did an integrated MSc in Bioinformatics — which sounds unrelated, but it's not. Scientific software, data pipelines, and research tools are a real gap in the market, and I can build those things properly because I actually understand the domain.<br/><br/>I care a lot about clean code and sensible architecture. I use Git properly. I ask questions when something's unclear. I reuse proven tools instead of building from scratch.</p>
+      <div class="resume-box">
+        <div class="resume-box-text">
+          <div class="rl">My Resume</div>
+          <div class="rn">Deepa Vadivel — Python & Django Developer</div>
+          <div class="rm">PDF · 2026</div>
+        </div>
+        <a href="Deepa_Developer.pdf" download class="dl-btn">⬇ Download</a>
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="about-card"><div class="ac-icon">🎓</div><div><div class="ac-title">MSc Bioinformatics (Integrated)</div><div class="ac-sub">Bharathidasan University, Trichy · CGPA 7.82/10 · 2017–2022</div></div></div>
+      <div class="about-card"><div class="ac-icon">📍</div><div><div class="ac-title">Bengaluru, India</div><div class="ac-sub">Open to remote freelance work globally</div></div></div>
+      <div class="about-card"><div class="ac-icon">⚡</div><div><div class="ac-title">API Design & Database Optimisation</div><div class="ac-sub">Primary area of expertise and deep interest</div></div></div>
+      <div class="about-card"><div class="ac-icon">🧬</div><div><div class="ac-title">Science + Engineering Background</div><div class="ac-sub">Unique blend of biological domain knowledge & Python development</div></div></div>
+      <div class="about-card"><div class="ac-icon">💻</div><div><div class="ac-title">GitLab · @deepavadivel</div><div class="ac-sub">gitlab.com/deepavadivel</div></div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- SKILLS -->
+<div class="skills-bg">
+  <div class="skills-inner" id="skills">
+    <div class="skills-layout">
+      <div><div class="skills-heading">Tech<br/><em>Stack</em></div></div>
+      <div>
+        <div class="skill-bars">
+          <div class="sk-row"><div class="sk-name">Python</div><div class="sk-bar"><div class="sk-fill" style="width:95%"></div></div><div class="sk-pct">95%</div></div>
+          <div class="sk-row"><div class="sk-name">Django & DRF</div><div class="sk-bar"><div class="sk-fill" style="width:90%"></div></div><div class="sk-pct">90%</div></div>
+          <div class="sk-row"><div class="sk-name">REST API Design</div><div class="sk-bar"><div class="sk-fill" style="width:88%"></div></div><div class="sk-pct">88%</div></div>
+          <div class="sk-row"><div class="sk-name">PostgreSQL / SQL</div><div class="sk-bar"><div class="sk-fill" style="width:82%"></div></div><div class="sk-pct">82%</div></div>
+          <div class="sk-row"><div class="sk-name">R & Bioinformatics</div><div class="sk-bar"><div class="sk-fill" style="width:80%"></div></div><div class="sk-pct">80%</div></div>
+          <div class="sk-row"><div class="sk-name">Git / GitLab</div><div class="sk-bar"><div class="sk-fill" style="width:85%"></div></div><div class="sk-pct">85%</div></div>
+        </div>
+        <div class="skill-cats">
+          <div class="sk-cat"><div class="sk-cat-label">Tools</div><div class="chips"><span class="chip">Postman</span><span class="chip">Linux</span><span class="chip">Bash</span><span class="chip">RStudio</span></div></div>
+          <div class="sk-cat"><div class="sk-cat-label">NGS / Bioinformatics</div><div class="chips"><span class="chip">Cutadapt</span><span class="chip">HISAT2</span><span class="chip">Cufflinks</span><span class="chip">Nextflow</span><span class="chip">SamTools</span><span class="chip">GATK</span><span class="chip">FastQC</span><span class="chip">Illumina</span></div></div>
+          <div class="sk-cat"><div class="sk-cat-label">Frontend (Basic)</div><div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Tailwind</span><span class="chip">React</span></div></div>
+          <div class="sk-cat"><div class="sk-cat-label">Other</div><div class="chips"><span class="chip">Web Scraping</span><span class="chip">Data Analysis</span><span class="chip">Celery</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="eyebrow">Selected work</div>
+  <div class="s-title">Projects</div>
+  <div class="proj-grid">
+
+    <!-- PROJECT 1 — replace src with your screenshot -->
+    <div class="proj-card featured">
+      <div class="proj-thumb">
+        <img src="https://www.freepik.com/free-vector/flat-biotechnology-illustration_12982850.htm#fromView=search&page=2&position=22&uuid=9e6455ad-8826-43a2-9d13-457fb80ee9fb&query=bioinformatic+project+related+images" alt="Django Bioinformatics Tool" onerror="this.parentElement.style.background='#eef6f0';this.remove()"/>
+        <div class="proj-num">01</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-badge">Featured Project</div>
+        <div class="proj-name">Django Bioinformatics Tool</div>
+        <div class="proj-desc">A web-based Django application that simplifies advanced sequence analysis workflows for researchers — allowing non-technical users to run complex NGS pipelines through an intuitive interface, saving hours of manual command-line work weekly.</div>
+        <div class="proj-stack"><span class="ptag">Django</span><span class="ptag">Python</span><span class="ptag">PostgreSQL</span><span class="ptag">NGS Pipelines</span><span class="ptag">Linux</span></div>
+      </div>
+    </div>
+
+    <!-- PROJECT 2 — replace src with your screenshot -->
+    <div class="proj-card">
+      <div class="proj-thumb">
+        <img src="https://www.freepik.com/free-photo/hand-tounching-laptop-many-envelopes_926672.htm#fromView=search&page=1&position=33&uuid=4efec8b8-1466-4622-9fc9-0962aa5cd28a&query=Bulk+Email+Management+Systemproject+related+images" alt="Bulk Email Management" onerror="this.parentElement.style.background='#fdf3e3';this.remove()"/>
+        <div class="proj-num">02</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-badge">Backend System</div>
+        <div class="proj-name">Bulk Email Management System</div>
+        <div class="proj-desc">Full-featured Django platform with scheduled campaigns, template management, and delivery tracking for marketing teams.</div>
+        <div class="proj-stack"><span class="ptag">Django</span><span class="ptag">PostgreSQL</span><span class="ptag">REST API</span></div>
+      </div>
+    </div>
+
+    <!-- PROJECT 3 — replace src with your screenshot -->
+    <div class="proj-card">
+      <div class="proj-thumb">
+        <img src="https://www.freepik.com/free-vector/business-people-watching-profile_4949445.htm#fromView=search&page=1&position=3&uuid=04752fd7-3434-4985-a735-9cd83ad1f19a&query=HRMS+Systemproject+related+images" alt="HRMS Platform API" onerror="this.parentElement.style.background='#f0f4fd';this.remove()"/>
+        <div class="proj-num">03</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-badge">API — 600 daily users</div>
+        <div class="proj-name">HRMS Platform API</div>
+        <div class="proj-desc">End-to-end APIs for an HRMS platform serving ~600 daily active employees — attendance tracking, salary slip generation, KRA/KPI management, and core HR workflows.</div>
+        <div class="proj-stack"><span class="ptag">Django REST</span><span class="ptag">PostgreSQL</span><span class="ptag">API Design</span></div>
+      </div>
+    </div>
+
+    <!-- PROJECT 4 — replace src with your screenshot -->
+    <div class="proj-card">
+      <div class="proj-thumb">
+        <img src="https://www.freepik.com/free-vector/illustration-light-bulb-ideas_2807773.htm#fromView=search&page=1&position=11&uuid=d881fee0-0dba-4f40-a47d-fa91346fe1a7&query=academic+ResearchSystemproject+related+images" alt="RNA-Seq Analysis" onerror="this.parentElement.style.background='#f5eef8';this.remove()"/>
+        <div class="proj-num">04</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-badge">Academic Research</div>
+        <div class="proj-name">RNA-Seq Analysis</div>
+        <div class="proj-desc">End-to-end RNA sequencing and whole exome analysis for rare disease samples using Cutadapt, HISAT2 & Cufflinks. Results visualised in RStudio.</div>
+        <div class="proj-stack"><span class="ptag">RNA-Seq</span><span class="ptag">HISAT2</span><span class="ptag">Cufflinks</span><span class="ptag">R</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="eyebrow">Career</div>
+  <div class="s-title">Work Experience</div>
+  <div class="exp-grid">
+    <div class="exp-year-col"><div class="exp-col-label">Timeline</div></div>
+    <div class="exp-entries">
+      <div class="exp-entry">
+        <div class="exp-period">July 2023 — Present</div>
+        <div class="exp-role">Python Developer</div>
+        <div class="exp-company">Chadura Tech · Bengaluru, Karnataka · On-site</div>
+        <ul class="exp-list">
+          <li>Built end-to-end APIs for an HRMS platform serving ~600 daily active employees — attendance tracking, salary slip generation, KRA/KPI management, and core HR workflows using Django REST Framework and PostgreSQL.</li>
+          <li>Supported backend and frontend development for Simule8, a tech game project — Django for server-side logic and HTML/CSS for UI components.</li>
+          <li>Developing a Django-based bioinformatics tool that simplifies advanced sequence analysis workflows for researchers.</li>
+          <li>Built and maintained RESTful APIs — authentication, serialisation, and third-party integrations.</li>
+          <li>Developed a bulk email management system with scheduling, template management, and delivery tracking.</li>
+          <li>Worked on a CRM platform — improved API response structures and added view logic for frontend integration.</li>
+          <li>Built Python web scraping scripts to extract and process article data from various online sources.</li>
+          <li>Uses Git with branching strategies and code review practices within the team.</li>
+        </ul>
+      </div>
+      <div class="exp-entry">
+        <div class="exp-period">Sep 2022 — July 2023</div>
+        <div class="exp-role">Intern</div>
+        <div class="exp-company">Genix.ai · Bengaluru, Karnataka · On-site</div>
+        <ul class="exp-list">
+          <li>Performed data analysis using Bioinformatics tools and workflows.</li>
+          <li>Developed web pages using HTML, CSS, Python, and R for scientific data presentation and interaction.</li>
+          <li>Built web applications using Django following MVC architecture principles.</li>
+          <li>Utilized Git for version control and collaborative code management.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- WHY WORK WITH ME -->
+<section class="section" id="why">
+  <div class="eyebrow">A few honest reasons</div>
+  <div class="s-title">Why work with me</div>
+  <div class="why-list">
+    <div class="why-item">
+      <div class="why-num">01</div>
+      <div class="why-content">
+        <div class="why-title">I actually know the science</div>
+        <div class="why-desc">Most backend developers can't read a bioinformatics brief without Googling half the words. I spent five years studying it. If you're building tools for researchers, genomics workflows, or scientific data platforms — that context matters a lot.</div>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-num">02</div>
+      <div class="why-content">
+        <div class="why-title">APIs are where I spend most of my time</div>
+        <div class="why-desc">Django REST Framework, auth flows, serialisers, endpoint design — this is my everyday work, not a bullet point I added to a resume. At Chadura I built and maintained APIs that real users depend on — including an HRMS used by 600 people daily.</div>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-num">03</div>
+      <div class="why-content">
+        <div class="why-title">The code is readable after I leave</div>
+        <div class="why-desc">I write code the next person can understand. Clear naming, sensible structure, proper Git history. I've inherited messy codebases — I know what it feels like, and I don't do it to others.</div>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-num">04</div>
+      <div class="why-content">
+        <div class="why-title">Remote work isn't new to me</div>
+        <div class="why-desc">Bengaluru-based, open globally. I communicate in writing, keep things documented, and don't need to be chased. Async collaboration is just how I work.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HIRE BANNER -->
+<div class="hire-banner">
+  <div>
+    <div class="hb-tag">Open for freelance work</div>
+    <div class="hb-title">Let's build something<br/><em>great together.</em></div>
+  </div>
+  <div class="hb-right">
+    <a href="mailto:deepsdeepa99@gmail.com" class="hb-btn">✉ Send me an email</a>
+    <a href="Deepa_Developer.pdf" download class="hb-btn ghost">⬇ Download Resume</a>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="eyebrow">Get in touch</div>
+  <div class="s-title">Contact Me</div>
+  <div class="contact-layout">
+    <div class="c-items">
+      <div class="c-item"><div class="c-ico">✉️</div><div><div class="c-lbl">Email</div><div class="c-val">deepsdeepa99@gmail.com</div></div></div>
+      <div class="c-item"><div class="c-ico">📞</div><div><div class="c-lbl">Phone</div><div class="c-val">+91 95976 44100</div></div></div>
+      <div class="c-item"><div class="c-ico">📍</div><div><div class="c-lbl">Location</div><div class="c-val">Bengaluru, India · Remote-friendly</div></div></div>
+      <div class="c-item"><div class="c-ico">💻</div><div><div class="c-lbl">GitLab</div><div class="c-val">@deepavadivel · gitlab.com/deepavadivel</div></div></div>
+    </div>
+    <form class="cform" id="contact-form">
+  <div class="f-row">
+    <div class="fg">
+      <label class="flbl">Your Name</label>
+      <input class="finput" type="text" name="user_name" placeholder="Your name" required>
+    </div>
+
+    <div class="fg">
+      <label class="flbl">Email</label>
+      <input class="finput" type="email" name="user_email" placeholder="your@email.com" required>
+    </div>
+  </div>
+
+  <div class="fg">
+    <label class="flbl">Project Type</label>
+    <input class="finput" type="text" name="project_type" placeholder="API, Django app, data pipeline...">
+  </div>
+
+  <div class="fg">
+    <label class="flbl">Message</label>
+    <textarea class="finput ftextarea" name="message" placeholder="Tell me about your project..."></textarea>
+  </div>
+
+  <button type="submit" class="fsubmit" id="sb">
+    Send Message →
+  </button>
+</form>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">Deepa<span style="margin-left:5px">Vadivel</span></div>
+  <div class="f-copy">© 2026 Deepa Vadivel · Python & Django Developer · Bengaluru, India</div>
+  <div class="f-links">
+    <a href="mailto:deepsdeepa99@gmail.com">Email</a>
+    <a href="https://gitlab.com/deepavadivel" target="_blank">GitLab</a>
+    <a href="Deepa_Developer.pdf" download>Resume</a>
+  </div>
+</footer>
+
+<script>
+const cur=document.getElementById('cur'),curR=document.getElementById('curR');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function animR(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(animR);})();
+document.querySelectorAll('a,button,.srv,.proj-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='16px';cur.style.height='16px';curR.style.width='50px';curR.style.height='50px';curR.style.opacity='0.3';});
+  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';curR.style.width='32px';curR.style.height='32px';curR.style.opacity='0.5';});
+});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:0.1});
+document.querySelectorAll('.srv,.proj-card,.exp-entry,.why-item,.sk-row,.about-card').forEach(el=>{
+  el.style.opacity='0';el.style.transform='translateY(20px)';
+  el.style.transition='opacity 0.55s ease,transform 0.55s ease';
+  obs.observe(el);
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+(function(){
+  emailjs.init("bxVpEui0TjG8jh5dU");
+})();
+
+document.getElementById("contact-form")
+.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const button = document.getElementById("sb");
+
+  button.textContent = "Sending...";
+  button.disabled = true;
+
+  emailjs.sendForm(
+    "service_lydiq18",   // your service ID
+    "template_835r57s",  // your template ID
+    this
+  )
+  .then(function() {
+
+    button.textContent = "Sent! ✓";
+    button.style.background = "#4caf7d";
+
+    document.getElementById("contact-form").reset();
+
+    setTimeout(() => {
+      button.textContent = "Send Message →";
+      button.disabled = false;
+      button.style.background = "";
+    }, 3000);
+
+  })
+  .catch(function(error) {
+
+    console.error("EmailJS Error:", error);
+
+    button.textContent = "Failed ❌";
+    button.disabled = false;
+
+    alert("Email failed: " + error.text);
+
+  });
+
+});
+</script>
+</body>
+</html>
