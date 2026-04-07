@@ -352,7 +352,7 @@ footer{background:var(--ink);color:rgba(255,255,255,0.45);padding:30px 56px;disp
     <!-- PROJECT 1 — replace src with your screenshot -->
     <div class="proj-card featured">
       <div class="proj-thumb">
-        <img src="https://www.freepik.com/free-vector/flat-biotechnology-illustration_12982850.htm#fromView=search&page=2&position=22&uuid=9e6455ad-8826-43a2-9d13-457fb80ee9fb&query=bioinformatic+project+related+images" alt="Django Bioinformatics Tool" onerror="this.parentElement.style.background='#eef6f0';this.remove()"/>
+        <img src="5169263.jpg" alt="Django Bioinformatics Tool" onerror="this.parentElement.style.background='#eef6f0';this.remove()"/>
         <div class="proj-num">01</div>
       </div>
       <div class="proj-body">
@@ -366,7 +366,7 @@ footer{background:var(--ink);color:rgba(255,255,255,0.45);padding:30px 56px;disp
     <!-- PROJECT 2 — replace src with your screenshot -->
     <div class="proj-card">
       <div class="proj-thumb">
-        <img src="https://www.freepik.com/free-photo/hand-tounching-laptop-many-envelopes_926672.htm#fromView=search&page=1&position=33&uuid=4efec8b8-1466-4622-9fc9-0962aa5cd28a&query=Bulk+Email+Management+Systemproject+related+images" alt="Bulk Email Management" onerror="this.parentElement.style.background='#fdf3e3';this.remove()"/>
+        <img src="email.jpg" alt="Bulk Email Management" onerror="this.parentElement.style.background='#fdf3e3';this.remove()"/>
         <div class="proj-num">02</div>
       </div>
       <div class="proj-body">
@@ -380,7 +380,7 @@ footer{background:var(--ink);color:rgba(255,255,255,0.45);padding:30px 56px;disp
     <!-- PROJECT 3 — replace src with your screenshot -->
     <div class="proj-card">
       <div class="proj-thumb">
-        <img src="https://www.freepik.com/free-vector/business-people-watching-profile_4949445.htm#fromView=search&page=1&position=3&uuid=04752fd7-3434-4985-a735-9cd83ad1f19a&query=HRMS+Systemproject+related+images" alt="HRMS Platform API" onerror="this.parentElement.style.background='#f0f4fd';this.remove()"/>
+        <img src="19801.jpg" alt="HRMS Platform API" onerror="this.parentElement.style.background='#f0f4fd';this.remove()"/>
         <div class="proj-num">03</div>
       </div>
       <div class="proj-body">
@@ -394,7 +394,7 @@ footer{background:var(--ink);color:rgba(255,255,255,0.45);padding:30px 56px;disp
     <!-- PROJECT 4 — replace src with your screenshot -->
     <div class="proj-card">
       <div class="proj-thumb">
-        <img src="https://www.freepik.com/free-vector/illustration-light-bulb-ideas_2807773.htm#fromView=search&page=1&position=11&uuid=d881fee0-0dba-4f40-a47d-fa91346fe1a7&query=academic+ResearchSystemproject+related+images" alt="RNA-Seq Analysis" onerror="this.parentElement.style.background='#f5eef8';this.remove()"/>
+        <img src="rna_seq.jpg" alt="RNA-Seq Analysis" onerror="this.parentElement.style.background='#f5eef8';this.remove()"/>
         <div class="proj-num">04</div>
       </div>
       <div class="proj-body">
@@ -508,32 +508,38 @@ footer{background:var(--ink);color:rgba(255,255,255,0.45);padding:30px 56px;disp
       <div class="c-item"><div class="c-ico">📍</div><div><div class="c-lbl">Location</div><div class="c-val">Bengaluru, India · Remote-friendly</div></div></div>
       <div class="c-item"><div class="c-ico">💻</div><div><div class="c-lbl">GitLab</div><div class="c-val">@deepavadivel · gitlab.com/deepavadivel</div></div></div>
     </div>
-    <form class="cform" id="contact-form">
+   <form class="cform" id="contactForm" onsubmit="handleSub(event)">
   <div class="f-row">
     <div class="fg">
-      <label class="flbl">Your Name</label>
-      <input class="finput" type="text" name="user_name" placeholder="Your name" required>
+      <label class="flbl">Your Name <span style="color:var(--gold)">*</span></label>
+      <input class="finput" type="text" name="from_name" placeholder="Jane Smith" required/>
     </div>
-
     <div class="fg">
-      <label class="flbl">Email</label>
-      <input class="finput" type="email" name="user_email" placeholder="your@email.com" required>
+      <label class="flbl">Your Email <span style="color:var(--gold)">*</span></label>
+      <input class="finput" type="email" name="from_email" placeholder="jane@company.com" required/>
     </div>
   </div>
-
   <div class="fg">
-    <label class="flbl">Project Type</label>
-    <input class="finput" type="text" name="project_type" placeholder="API, Django app, data pipeline...">
+    <label class="flbl">What do you need? <span style="color:var(--gold)">*</span></label>
+    <select class="finput" name="project_type" required style="appearance:none;">
+      <option value="" disabled selected>Select a service…</option>
+      <option>Backend API Development</option>
+      <option>Django Web Application</option>
+      <option>Bioinformatics Tool</option>
+      <option>Database Design</option>
+      <option>Data Analysis</option>
+      <option>Web Scraping / Pipeline</option>
+      <option>Other</option>
+    </select>
   </div>
-
   <div class="fg">
-    <label class="flbl">Message</label>
-    <textarea class="finput ftextarea" name="message" placeholder="Tell me about your project..."></textarea>
+    <label class="flbl">Your Message <span style="color:var(--gold)">*</span></label>
+    <textarea class="finput ftextarea" name="message" placeholder="Tell me about your project — what you're building, your timeline, and anything else that's helpful." required></textarea>
   </div>
-
-  <button type="submit" class="fsubmit" id="sb">
-    Send Message →
-  </button>
+  <div id="formSuccess" style="display:none;background:#eaf3de;border:0.5px solid #97c459;border-radius:4px;padding:14px 16px;font-size:13px;color:#3b6d11;margin-bottom:8px;">
+    ✅ Message sent!.
+  </div>
+  <button class="fsubmit" type="submit" id="submitBtn">Send message →</button>
 </form>
   </div>
 </section>
@@ -564,53 +570,26 @@ document.querySelectorAll('.srv,.proj-card,.exp-entry,.why-item,.sk-row,.about-c
   obs.observe(el);
 });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
-(function(){
-  emailjs.init("bxVpEui0TjG8jh5dU");
-})();
+  (function(){
+    emailjs.init("bxVpEui0TjG8jh5dU"); // replace with your EmailJS public key
+  })();
 
-document.getElementById("contact-form")
-.addEventListener("submit", function(e) {
-  e.preventDefault();
+  function handleSub(event) {
+    event.preventDefault(); // prevent page reload
 
-  const button = document.getElementById("sb");
+    const form = event.target;
 
-  button.textContent = "Sending...";
-  button.disabled = true;
-
-  emailjs.sendForm(
-    "service_lydiq18",   // your service ID
-    "template_835r57s",  // your template ID
-    this
-  )
-  .then(function() {
-
-    button.textContent = "Sent! ✓";
-    button.style.background = "#4caf7d";
-
-    document.getElementById("contact-form").reset();
-
-    setTimeout(() => {
-      button.textContent = "Send Message →";
-      button.disabled = false;
-      button.style.background = "";
-    }, 3000);
-
-  })
-  .catch(function(error) {
-
-    console.error("EmailJS Error:", error);
-
-    button.textContent = "Failed ❌";
-    button.disabled = false;
-
-    alert("Email failed: " + error.text);
-
-  });
-
-});
+    emailjs.sendForm("service_lydiq18", "template_835r57s", form)
+      .then(() => {
+        alert('Message sent successfully! ✅');
+        form.reset();
+      }, (err) => {
+        alert('Oops! Something went wrong... ❌');
+        console.error(err);
+      });
+  }
 </script>
 </body>
 </html>
